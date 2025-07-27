@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Task-2</title>
+  <style>
+    h2 {
+      color: darkblue;
+      font-family: Arial;
+      border-bottom: 2px solid #ccc;
+    }
+    .student {
+      margin: 5px 0;
+      font-family: Arial;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>1. All Students:</h2>
+  <div id="all"></div>
+
+  <h2>2. Students With Grade > 80:</h2>
+  <div id="high"></div>
+
+  <h2>3. Students Sorted By Name:</h2>
+  <div id="sorted"></div>
+
+  <script>
+    var students = [
+      { fname: 'ali', age: 22, grade: 100 },
+      { fname: 'nora', age: 20, grade: 90 },
+      { fname: 'nada', age: 25, grade: 75 },
+      { fname: 'heba', age: 19, grade: 50 },
+      { fname: 'bassem', age: 21, grade: 40 }
+    ];
+
+    function printStudents(arr, targetId) {
+      var container = document.getElementById(targetId);
+      arr.forEach(function (s) {
+        var line = document.createElement("div");
+        line.className = "student";
+        line.textContent = `Name: ${s.fname}, Age: ${s.age}, Grade: ${s.grade}`;
+        container.appendChild(line);
+      });
+    }
+
+    printStudents(students, "all");
+
+    var highGrades = students.filter(function (s) {
+      return s.grade > 80;
+    });
+    printStudents(highGrades, "high");
+
+    var sortedStudents = students.slice().sort(function (a, b) {
+      return a.fname.localeCompare(b.fname);
+    });
+    printStudents(sortedStudents, "sorted");
+  </script>
+
+</body>
+</html>

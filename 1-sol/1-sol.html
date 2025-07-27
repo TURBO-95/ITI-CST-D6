@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function showPopup() {
+      var msg = "Welcome to JS";
+      var i = 0;
+      var win = window.open("", "", "width=300,height=200");
+
+      win.document.write("<!DOCTYPE html><html><head><title>Task-1</title></head><body><div id='txt'></div></body></html>");
+      win.document.close();
+
+      var interval = setInterval(function () {
+        var p = win.document.getElementById("txt");
+        if (p) {
+          p.innerText = msg.slice(0, i + 1);
+          i++;
+
+          if (i === msg.length) {
+            clearInterval(interval);
+            setTimeout(function () {
+              win.close();
+            }, 1000);
+          }
+        }
+      }, 200);
+    }
+    window.onload = showPopup;
+  </script>
+</head>
+<body>
+  <h1>Task-1</h1>
+</body>
+</html>
