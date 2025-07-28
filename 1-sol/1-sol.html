@@ -12,10 +12,11 @@
 
       var interval = setInterval(function () {
         win.document.body.innerText = msg.slice(0, i + 1);
-        i++;
+        i = i + 1;
 
         if (i === msg.length) {
           clearInterval(interval);
+
           setTimeout(function () {
             win.close();
           }, 1000);
