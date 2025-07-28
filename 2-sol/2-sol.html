@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>Task-2</title>
   <style>
     h2 {
@@ -45,9 +44,15 @@
 
   <h2>3. Students Sorted By Name:</h2>
   <script>
-    var sorted = students.slice(); // make a copy
+    var sorted = [];
+    for (var i = 0; i < students.length; i++) {
+      sorted[i] = students[i];
+    }
+
     sorted.sort(function (a, b) {
-      return a.fname.localeCompare(b.fname);
+      if (a.fname < b.fname) return -1;
+      if (a.fname > b.fname) return 1;
+      return 0;
     });
 
     for (var i = 0; i < sorted.length; i++) {
