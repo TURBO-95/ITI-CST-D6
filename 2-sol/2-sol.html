@@ -18,14 +18,6 @@
 <body>
 
   <h2>1. All Students:</h2>
-  <div id="all"></div>
-
-  <h2>2. Students With Grade > 80:</h2>
-  <div id="high"></div>
-
-  <h2>3. Students Sorted By Name:</h2>
-  <div id="sorted"></div>
-
   <script>
     var students = [
       { fname: 'ali', age: 22, grade: 100 },
@@ -35,27 +27,33 @@
       { fname: 'bassem', age: 21, grade: 40 }
     ];
 
-    function printStudents(arr, targetId) {
-      var container = document.getElementById(targetId);
-      arr.forEach(function (s) {
-        var line = document.createElement("div");
-        line.className = "student";
-        line.textContent = `Name: ${s.fname}, Age: ${s.age}, Grade: ${s.grade}`;
-        container.appendChild(line);
-      });
+    for (var i = 0; i < students.length; i++) {
+      var s = students[i];
+      document.write(`<div class="student">Name: ${s.fname}, Age: ${s.age}, Grade: ${s.grade}</div>`);
     }
+  </script>
 
-    printStudents(students, "all");
+  <h2>2. Students With Grade > 80:</h2>
+  <script>
+    for (var i = 0; i < students.length; i++) {
+      var s = students[i];
+      if (s.grade > 80) {
+        document.write(`<div class="student">Name: ${s.fname}, Age: ${s.age}, Grade: ${s.grade}</div>`);
+      }
+    }
+  </script>
 
-    var highGrades = students.filter(function (s) {
-      return s.grade > 80;
-    });
-    printStudents(highGrades, "high");
-
-    var sortedStudents = students.slice().sort(function (a, b) {
+  <h2>3. Students Sorted By Name:</h2>
+  <script>
+    var sorted = students.slice(); // make a copy
+    sorted.sort(function (a, b) {
       return a.fname.localeCompare(b.fname);
     });
-    printStudents(sortedStudents, "sorted");
+
+    for (var i = 0; i < sorted.length; i++) {
+      var s = sorted[i];
+      document.write(`<div class="student">Name: ${s.fname}, Age: ${s.age}, Grade: ${s.grade}</div>`);
+    }
   </script>
 
 </body>
