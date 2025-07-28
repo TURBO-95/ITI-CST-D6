@@ -1,38 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Counter</title>
-  <style>
-    .number-box {
-      border: 1px solid red;
-      padding: 4px;
-      margin: 5px 0;
-      font-family: Arial, sans-serif;
-      display: inline-block;
-    }
-  </style>
 </head>
 <body>
 
-  <div id="counter-container"></div>
-
   <script>
-    var counter = 1;
-    var container = document.getElementById("counter-container");
+    var num = 1;
 
     setInterval(function () {
-      var span = document.createElement("span");
-      span.className = "number-box";
-      span.textContent = counter;
-
-      var line = document.createElement("div");
-      line.appendChild(span);
-      container.appendChild(line);
-
-      document.title =  counter;
-      counter++;
-    }, 1000);
+      document.write("<div style='border: 1px solid red; padding: 5px; margin: 5px; display: block; width: fit-content;'>" + num + "</div>");
+      document.title = num;
+      num++;
+    }, 500);
   </script>
 
 </body>
